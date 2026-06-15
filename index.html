@@ -1,4 +1,138 @@
-# jsglazer.github.io
-Overview of integrated research and knowledge management workflow using Zotero and Obsidian.
+---
+layout: default
+title: Zotero-Obsidian Research Workflow
+---
 
-test one
+<p>I'm an incoming PhD student in public policy. Before I start school, I decided to prepare a modern workflow for taking both digital and paper notes. I leveraged the amazing work of developers who build plug-ins for Zotero and Obsidian, namely <a href="https://github.com/windingwind/zotero-better-notes">windingwind's zotero-better-notes</a> and <a href="https://github.com/mgmeyers/obsidian-zotero-integration">obsidian-zotero-integration</a>. I am releasing a modernized set of these plug-ins, plus other tools, which are more efficient and secure than their predecessors.</p>
+
+<p>The core workflow remains annotating digital items in Zotero and keeping notes in Obsidian. Zotero remains the platform for managing citations (digital and paper) and creating annotations. Obsidian remains the platform for taking notes, developing wikis, utilizing spaced repetition, and other knowledge management activities.</p>
+
+<p>My new plugins replace the following:</p>
+<ul>
+  <li>Better Notes for Zotero</li>
+  <li>Highlighter Descriptions for Zotero</li>
+  <li>Zotero Converter (new plug-in for converting all sources to PDF)</li>
+  <li>Zotero manager for Obsidian</li>
+</ul>
+
+<hr>
+
+<h1>Zotero & Obsidian Plugins: Migration & Feature Overview</h1>
+
+<p>This document outlines the major feature, architectural, and language improvements when moving to the modernized versions of the Zotero and Obsidian integration plugins maintained by <a href="https://github.com/jsglazer">@jsglazer</a>.</p>
+
+<hr>
+
+<h2>1. Zotero Plugin: windingwind's <code>zotero-better-notes</code> ➔ jsglazer's <code>better-notes</code></h2>
+
+<p>The new <a href="https://github.com/jsglazer/better-notes">better-notes</a> is a direct fork of <a href="https://github.com/windingwind/zotero-better-notes">windingwind's zotero-better-notes</a>, focused on safety, reliability, and tighter Obsidian integration.</p>
+
+<h3>🚀 Key Improvements & New Features</h3>
+<ul>
+  <li><strong>Native Annotation Color Labels:</strong> Assign meanings/labels to highlight colors (e.g., <em>Yellow = "Key Finding"</em>, <em>Red = "Contradiction"</em>). These can be printed alongside annotations or used to group annotations into structured sections using <code>{% annotations grouped %}</code>.</li>
+  <li><strong>Multiple Synced Notes per Item:</strong> Each Zotero item can now sync multiple independent notes to disk. The plugin prompts for a short unique ID if there is a filename clash.</li>
+  <li><strong>Automatic 3-Way Merge:</strong> Handles sync conflicts by performing an automatic 3-way merge on non-conflicting edits. True conflicts present a diff viewer.</li>
+  <li><strong>Dedicated Keyboard Shortcuts:</strong>
+    <ul>
+      <li><code>⌃⌥S</code> — Run sync immediately (syncs all notes)</li>
+      <li><code>⌃⌥M</code> — Open Sync Manager</li>
+      <li><code>⌃⌥T</code> — Open Template Editor</li>
+      <li><code>⌃⌥P</code> — Open Zotero Plugins/Add-ons window</li>
+    </ul>
+  </li>
+  <li><strong>Better Sync Management & Exports:</strong> Cleaner markdown outputs, improved error handling, and additional context menu items.</li>
+</ul>
+
+<h3>🏗️ Architectural & Language Improvements</h3>
+<ul>
+  <li><strong>Sandboxed Liquid Templates:</strong> Replaced the original arbitrary-JavaScript template engine with a safe, sandboxed Liquid template language (using variables like <code>{{ item.title }}</code> and filters like <code>| year</code>).</li>
+  <li><strong>Strict TypeScript:</strong> Re-written and compiled under strict TypeScript rules to eliminate runtime crashes.</li>
+</ul>
+
+<h3>⚠️ Migration Details & Features Lost</h3>
+<blockquote style="border-left: 5px solid #d9534f; padding-left: 15px; margin-left: 0; color: #a94442; background-color: #f2dede; padding-top: 10px; padding-bottom: 10px;">
+  <strong>WARNING: JavaScript Templates are Lost</strong><br>
+  Arbitrary JavaScript execution within templates has been removed for sandboxing and security reasons.<br><br>
+  <strong>Migration Action:</strong> You must rewrite any custom JavaScript-based templates into <strong>Liquid syntax</strong>. For example:<br>
+  <ul>
+    <li><em>Old (JS):</em> <code>item.getField('title')</code></li>
+    <li><em>New (Liquid):</em> <code>{{ item.title }}</code></li>
+  </ul>
+</blockquote>
+
+<hr>
+
+<h2>2. Obsidian Plugin: mgmeyers' <code>obsidian-zotero-integration</code> ➔ jsglazer's <code>zotero-manager</code></h2>
+
+<p>The new <a href="https://github.com/jsglazer/zotero-manager">zotero-manager</a> is a modernized replacement for the original <a href="https://github.com/mgmeyers/obsidian-zotero-integration">obsidian-zotero-integration</a>, built for modern Obsidian versions.</p>
+
+<h3>🚀 Key Improvements & New Features</h3>
+<ul>
+  <li><strong>Zotero Web API Fallback Mode:</strong> Allows the plugin to work entirely without local Zotero running or Better BibTeX being installed by pulling data directly from Zotero's cloud servers.</li>
+  <li><strong>Overwrite Protection:</strong> Displays a confirmation modal before overwriting existing files in your vault.</li>
+  <li><strong>Persist Blocks:</strong> Supports Nunjucks persist blocks (<code>{% persist "key" %}...{% endpersist %}</code>) that preserve manual edits you make inside Obsidian notes during subsequent imports or syncs.</li>
+  <li><strong>Connection Status Badges:</strong> Live <strong>Linked</strong> / <strong>Not Linked</strong> badge in the plugin settings to debug connection issues.</li>
+  <li><strong>Color Label Integration:</strong> Supports formatting annotations using the custom color labels configured in the companion Zotero <code>better-notes</code> plugin.</li>
+</ul>
+
+<h3>🏗️ Architectural & Language Improvements</h3>
+<ul>
+  <li><strong>No External Binaries:</strong> Extracts PDF annotations using Zotero 6's native API, removing the need to download and run platform-specific binaries.</li>
+  <li><strong>Strict TypeScript & Modern Obsidian API:</strong> Rebuilt using strict TypeScript on Obsidian API 1.4+ (upgraded from mgmeyers' loose TypeScript on 1.1.x).</li>
+</ul>
+
+<h3>⚠️ Migration Details & Features Lost</h3>
+<blockquote style="border-left: 5px solid #31708f; padding-left: 15px; margin-left: 0; color: #31708f; background-color: #d9edf7; padding-top: 10px; padding-bottom: 10px;">
+  <strong>NOTE: High Template Compatibility</strong><br>
+  The template engine remains <strong>Nunjucks</strong>, making your existing templates from <code>obsidian-zotero-integration</code> highly compatible.<br><br>
+  <strong>Web API Limitation:</strong> The Zotero native item picker (CAYW) is unavailable in Zotero Web API fallback mode. The plugin falls back to an in-Obsidian search modal.
+</blockquote>
+
+<h3>Feature Comparison Matrix</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+  <thead>
+    <tr style="border-bottom: 2px solid #ddd; text-align: left;">
+      <th style="padding: 8px; border: 1px solid #ddd;">Feature</th>
+      <th style="padding: 8px; border: 1px solid #ddd;"><code>obsidian-zotero-integration</code> (Old)</th>
+      <th style="padding: 8px; border: 1px solid #ddd;"><code>zotero-manager</code> (New)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #ddd;"><strong>PDF Annotation Extraction</strong></td>
+      <td style="padding: 8px; border: 1px solid #ddd;">Runs external GitHub binaries</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">Uses Zotero 6 native API</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #ddd;"><strong>Web API Fallback (No Local Zotero)</strong></td>
+      <td style="padding: 8px; border: 1px solid #ddd;">❌ No</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">✔️ Yes</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #ddd;"><strong>TypeScript Compilation</strong></td>
+      <td style="padding: 8px; border: 1px solid #ddd;">Loose</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">Strict</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #ddd;"><strong>Obsidian API Target</strong></td>
+      <td style="padding: 8px; border: 1px solid #ddd;">1.1.x (Outdated)</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">1.4+ (Modern)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #ddd;"><strong>Overwrite Protection</strong></td>
+      <td style="padding: 8px; border: 1px solid #ddd;">❌ None</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">✔️ Confirm modal</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #ddd;"><strong>Persist Blocks</strong></td>
+      <td style="padding: 8px; border: 1px solid #ddd;">❌ No</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">✔️ Yes</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #ddd;"><strong>Template Engine</strong></td>
+      <td style="padding: 8px; border: 1px solid #ddd;">Nunjucks</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">Nunjucks (compatible)</td>
+    </tr>
+  </tbody>
+</table>
