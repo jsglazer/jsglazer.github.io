@@ -1,3 +1,4 @@
 title: Zotero-Obsidian Research Workflow
 description: How multiple repositories work together in an integrated workflow
-theme: jekyll-theme-minimal
+theme: jekyll-theme-modernist
+remote_theme: pages-themes/modernist@v0.2.0
