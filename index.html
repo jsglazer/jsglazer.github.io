@@ -29,7 +29,7 @@ title: Zotero-Obsidian Research Workflow
 
 <h3>🚀 Key Improvements & New Features</h3>
 <ul>
-  <li><strong>Native Annotation Color Labels:</strong> Assign meanings/labels to highlight colors (e.g., <em>Yellow = "Key Finding"</em>, <em>Red = "Contradiction"</em>). These can be printed alongside annotations or used to group annotations into structured sections using <code>{% annotations grouped %}</code>.</li>
+  <li><strong>Native Annotation Color Labels:</strong> Assign meanings/labels to highlight colors (e.g., <em>Yellow = "Key Finding"</em>, <em>Red = "Contradiction"</em>). These can be printed alongside annotations or used to group annotations into structured sections using <code>{% raw %}{% annotations grouped %}{% endraw %}</code>.</li>
   <li><strong>Multiple Synced Notes per Item:</strong> Each Zotero item can now sync multiple independent notes to disk. The plugin prompts for a short unique ID if there is a filename clash.</li>
   <li><strong>Automatic 3-Way Merge:</strong> Handles sync conflicts by performing an automatic 3-way merge on non-conflicting edits. True conflicts present a diff viewer.</li>
   <li><strong>Dedicated Keyboard Shortcuts:</strong>
@@ -45,7 +45,7 @@ title: Zotero-Obsidian Research Workflow
 
 <h3>🏗️ Architectural & Language Improvements</h3>
 <ul>
-  <li><strong>Sandboxed Liquid Templates:</strong> Replaced the original arbitrary-JavaScript template engine with a safe, sandboxed Liquid template language (using variables like <code>{{ item.title }}</code> and filters like <code>| year</code>).</li>
+  <li><strong>Sandboxed Liquid Templates:</strong> Replaced the original arbitrary-JavaScript template engine with a safe, sandboxed Liquid template language (using variables like <code>{% raw %}{{ item.title }}{% endraw %}</code> and filters like <code>| year</code>).</li>
   <li><strong>Strict TypeScript:</strong> Re-written and compiled under strict TypeScript rules to eliminate runtime crashes.</li>
 </ul>
 
@@ -56,7 +56,7 @@ title: Zotero-Obsidian Research Workflow
   <strong>Migration Action:</strong> You must rewrite any custom JavaScript-based templates into <strong>Liquid syntax</strong>. For example:<br>
   <ul>
     <li><em>Old (JS):</em> <code>item.getField('title')</code></li>
-    <li><em>New (Liquid):</em> <code>{{ item.title }}</code></li>
+    <li><em>New (Liquid):</em> <code>{% raw %}{{ item.title }}{% endraw %}</code></li>
   </ul>
 </blockquote>
 
@@ -70,7 +70,7 @@ title: Zotero-Obsidian Research Workflow
 <ul>
   <li><strong>Zotero Web API Fallback Mode:</strong> Allows the plugin to work entirely without local Zotero running or Better BibTeX being installed by pulling data directly from Zotero's cloud servers.</li>
   <li><strong>Overwrite Protection:</strong> Displays a confirmation modal before overwriting existing files in your vault.</li>
-  <li><strong>Persist Blocks:</strong> Supports Nunjucks persist blocks (<code>{% persist "key" %}...{% endpersist %}</code>) that preserve manual edits you make inside Obsidian notes during subsequent imports or syncs.</li>
+  <li><strong>Persist Blocks:</strong> Supports Nunjucks persist blocks (<code>{% raw %}{% persist "key" %}...{% endpersist %}{% endraw %}</code>) that preserve manual edits you make inside Obsidian notes during subsequent imports or syncs.</li>
   <li><strong>Connection Status Badges:</strong> Live <strong>Linked</strong> / <strong>Not Linked</strong> badge in the plugin settings to debug connection issues.</li>
   <li><strong>Color Label Integration:</strong> Supports formatting annotations using the custom color labels configured in the companion Zotero <code>better-notes</code> plugin.</li>
 </ul>
