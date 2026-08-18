@@ -17,10 +17,18 @@ Zotero Manager for Obsidian is a modernized replacement for the original `obsidi
 - **No External Binaries**: Extracts PDF annotations using Zotero's native APIs, removing the need to download and execute platform-specific binaries.
 - **Strict TypeScript & Modern target**: Rebuilt using strict TypeScript on Obsidian API 1.4+ (upgraded from the loose TypeScript rules and 1.1.x targets of the predecessor).
 
-## Requirements
-- Obsidian 1.4+ (desktop or mobile).
-- Zotero running locally with the Better BibTeX plugin (recommended for offline operations).
-- Nunjucks templates configured for imports (e.g., `zotero.md` template).
+## Requirements & Installation
+1. **Install Plugin**:
+   - Open Obsidian.
+   - Go to `Settings` > `Community Plugins` and enable them.
+   - Search for `Zotero Manager` (or copy the plugin folder containing `manifest.json`, `main.js`, and `styles.css` directly to your vault's `.obsidian/plugins/zotero-manager/` folder).
+   - Toggle the plugin `On` to enable it.
+2. **Configure Connection**:
+   - Go to plugin settings.
+   - For **Local Connection**: Ensure Zotero is running locally and the `Better BibTeX` plugin is installed in Zotero to supply citekeys. Verify the Live connection status badge shows **Linked**.
+   - For **Web API Fallback**: Toggle Web API Mode on, enter your Zotero User ID and Web API Key, and fetch references directly from the cloud.
+3. **Setup Templates**:
+   - Design your import templates in Obsidian using Nunjucks formatting. Save templates in your vault's designated templates folder and select them in the plugin settings.
 
 ## Migration
 - **High Template Compatibility**: The template engine remains **Nunjucks**, making your existing templates from `obsidian-zotero-integration` highly compatible with minimal or no modifications.
@@ -36,3 +44,7 @@ Zotero Manager for Obsidian is a modernized replacement for the original `obsidi
 | **Overwrite Protection** | ❌ None | ✔️ Confirm modal |
 | **Persist Blocks** | ❌ No | ✔️ Yes |
 | **Template Engine** | Nunjucks | Nunjucks (compatible) |
+
+## Future Integrations (Placeholders)
+- **LaTeX/BibTeX Exporter**: Integration with LaTeX citekeys to support automatic `.bib` export from notes directly.
+- **Pandoc Integration**: Direct connection with Pandoc to convert Zotero-imported markdown notes into Word documents or PowerPoint slides with citations.

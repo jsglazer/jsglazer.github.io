@@ -20,10 +20,20 @@ Better Notes for Zotero is a safe, sandbox-oriented fork of windingwind's origin
 - **Safe Template Sandboxing**: Replaced the original arbitrary-JavaScript template engine with a safe, sandboxed Liquid template language (using variables like `{% raw %}{{ item.title }}{% endraw %}` and filters like `| year`).
 - **Strict TypeScript Architecture**: Re-written and compiled under strict TypeScript rules to eliminate runtime crashes.
 
-## Requirements
-- Zotero 6 or Zotero 7.
-- Configuration settings pointing to the destination folder inside your Obsidian vault for automated file syncing.
-- Liquid templates defined for export formatting (e.g., `ItemNoteMD-Liquid` and `Annotations-Liquid`).
+## Requirements & Installation
+1. **Download Plugin**: Download the latest release `.xpi` file of `better-notes` from the [GitHub releases page](https://github.com/jsglazer/better-notes/releases).
+2. **Install in Zotero**:
+   - Open Zotero.
+   - Go to `Tools` > `Add-ons`.
+   - Click the gear icon (top-right) and select `Install Add-on From File...`.
+   - Choose the downloaded `.xpi` file and click `Install`.
+   - Restart Zotero when prompted.
+3. **Configure Sync settings**:
+   - Go to `Tools` > `Better Notes` > `Sync Manager` or use shortcut `⌃⌥M`.
+   - Configure the export destination path to point directly to your Obsidian vault's literature notes directory.
+4. **Create Export Template**:
+   - Go to the Template Editor (`⌃⌥T`).
+   - Define custom templates (such as `ItemNoteMD-Liquid` and `Annotations-Liquid`) to render notes into markdown using Liquid tags.
 
 ## Migration
 - **Replacing windingwind's `zotero-better-notes`**: To transition to jsglazer's modernized version, uninstall the old plugin and install `better-notes` from the release package.
@@ -34,3 +44,7 @@ Better Notes for Zotero is a safe, sandbox-oriented fork of windingwind's origin
   > **Migration Action:** You must rewrite any custom JavaScript-based templates into **Liquid syntax**. For example:
   > - *Old (JS):* `item.getField('title')`
   > - *New (Liquid):* `{% raw %}{{ item.title }}{% endraw %}`
+
+## Future Integrations (Placeholders)
+- **LaTeX Bibliographic Sync**: Export references directly using BibLaTeX syntax alongside notes for publication in LaTeX formats.
+- **Word/Keynote Notes Support**: Export structured summaries formatted for quick integration with Microsoft Word outline imports and Keynote slides.

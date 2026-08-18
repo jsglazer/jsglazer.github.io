@@ -20,10 +20,21 @@ Highlighter Descriptions (`zotero-highlighter-descriptions`) is a Zotero plugin 
   - **Orange**: Key definitions.
 - **Integration with Better Notes & Zotero Manager**: Color names are output during Better Notes note generation, allowing downstream markdown notes in Obsidian to style or query highlights by their semantic category rather than just color.
 
-## Requirements
-- Zotero 6 or Zotero 7.
-- A matched color configuration mapping inside Obsidian's `zotero-manager` settings to translate color labels into appropriate CSS styles (e.g., matching Yellow to Key).
+## Requirements & Installation
+1. **Download Plugin**: Download the latest `.xpi` file of `zotero-highlighter-descriptions` from [GitHub releases](https://github.com/jsglazer/zotero-highlighter-descriptions/releases).
+2. **Install in Zotero**:
+   - Open Zotero, go to `Tools` > `Add-ons`, click the gear icon, select `Install Add-on From File...`, and install the `.xpi` file.
+   - Restart Zotero.
+3. **Map Color Values**:
+   - Go to Zotero Preferences > Highlighter Descriptions.
+   - Map each default highlight color (Yellow, Red, Green, etc.) to your preferred semantic label (e.g., `Yellow` = `Key Finding`, `Red` = `Disagree`).
+4. **Matched Obsidian Configuration**:
+   - Ensure the color labels match your Obsidian `zotero-manager` stylesheet mappings.
 
 ## Migration
 - **Establishing a Standard**: This plugin replaces arbitrary, unmapped highlighting habits with a structured, labeled annotation taxonomy.
 - **Zotero to Obsidian Mapping**: Note that while Zotero Better Notes exports highlight color names, the Obsidian Zotero Manager plugin settings map these color names to functions (e.g., `Yellow => Key`) using a custom CSS/mapping table.
+
+## Future Integrations (Placeholders)
+- **Word/Keynote Style Mapping**: Automatically maps highlighting color descriptions to MS Word styles or Apple Keynote slide layouts when copying text.
+- **LaTeX Color Syntax**: Export color categories directly to LaTeX `xcolor` definitions inside bibliography pages.

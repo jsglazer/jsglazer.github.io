@@ -14,9 +14,19 @@ Zotero Converter (`zotero-convert`) is a Zotero plugin developed by jsglazer tha
 - **Format Normalization**: Standardizes typography and layout during conversion, ensuring readability on both desktop and tablet readers.
 - **Original Source Retention**: Retains original format attachments for reference while prioritizing the converted PDF for active reading, highlighting, and annotation.
 
-## Requirements
-- Zotero 6 or Zotero 7.
-- External document processors (e.g., Pandoc or system-level PDF conversion utilities) if required by the plugin config.
+## Requirements & Installation
+1. **Download & Install**:
+   - Download the `.xpi` file of `zotero-convert` from [GitHub releases](https://github.com/jsglazer/zotero-convert/releases).
+   - In Zotero, select `Tools` > `Add-ons`, click the gear icon, choose `Install Add-on From File...`, select the `.xpi`, and restart Zotero.
+2. **Dependencies**:
+   - Ensure system-level conversion tools (such as Pandoc or LibreOffice headless binaries) are installed and added to your system `PATH` if converting Microsoft Word or EPUB formats.
+3. **Preferences Setup**:
+   - Go to `Tools` > `Zotero Converter Settings`.
+   - Specify output PDF quality, compression levels, and auto-conversion triggers for newly imported files.
 
 ## Migration
 - **Eliminating Manual Steps**: Replaces tedious manual PDF conversion workflows (such as "Print to PDF", web-to-PDF converters, or custom Automator shell scripts like `Md-Tex-PDF` and `Md-PDF`).
+
+## Future Integrations (Placeholders)
+- **Advanced LaTeX/Word Conversion**: Convert draft manuscript PDFs back to raw editable LaTeX or Word documents with citations preserved.
+- **Keynote PDF slide splitter**: Automate the conversion and splitting of PowerPoint/Keynote PDFs into single-slide notes inside Zotero.

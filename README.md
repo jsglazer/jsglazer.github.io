@@ -5,7 +5,7 @@ title: Integrated Research & Publishing Environment
 
 # Integrated Research & Publishing Environment
 
-This repository documents the setup, design, and integration of a modernized literature research, knowledge synthesis, and document publishing environment tailored for PhD-level research. By coupling Zotero's reference management capabilities with Obsidian's knowledge base features and the structured compilation of the HAL system, this setup forms a secure and efficient workspace for managing academic projects.
+I'm an incoming PhD student in public policy. Before I start school, I decided to prepare a modern workflow for taking both digital and paper notes. I leveraged the amazing work of developers who build plug-ins for Zotero and Obsidian, namely [windingwind's zotero-better-notes](https://github.com/windingwind/zotero-better-notes) and [obsidian-zotero-integration](https://github.com/mgmeyers/obsidian-zotero-integration). I am releasing a modernized set of these plug-ins, plus other tools, which are more efficient and secure than their predecessors.
 
 ---
 
@@ -14,17 +14,17 @@ This repository documents the setup, design, and integration of a modernized lit
 The integrated environment standardizes document collection, annotation, concept mapping, and publishing into a systematic pipeline. It replaces fragmented workflows with a unified, compiler-driven knowledge graph. The workflow consists of the following core tasks:
 
 - **Reading and Annotating PDFs in Zotero**: Digital sources of all types are converted to PDF format and annotated (using highlights and comments linked to specific highlight colors) directly in Zotero's native reader. Notes are then automatically exported and kept in sync with Obsidian.
-- **Creating and Annotating Markdown in Obsidian**: Researchers can create original markdown notes and annotate both synced literature notes and original files using [MD Annotation](md-annotation.html), a delimiter-free, out-of-band annotation sidebar that preserves the clean plain-text structure of note bodies.
+- **Creating and Annotating Markdown in Obsidian**: Researchers can create original markdown notes and annotate both synced literature notes and original files using [MD Annotation](md-annotation.md), a delimiter-free, out-of-band annotation sidebar that preserves the clean plain-text structure of note bodies.
 - **Synthesizing Knowledge via the HAL System**: Notes and articles are collected in a structured vault system inside `VaultSchar` (modeled after a compiler architecture) where an LLM compiler agent automatically indexes materials, writes document summaries (`DocSum/`), and identifies logical connections (`Connections/`) to build a cross-referenced research wiki.
-- **Adding Citations Directly from Zotero**: Citations and bibliography details are pulled dynamically into Obsidian notes using [Zotero Manager](zotero-manager.html), supporting both local database queries and cloud Web API fallbacks.
-- **Publishing and Document Export**: Finished articles, reports, or research summaries are compiled directly from Obsidian into publication-ready PDFs using [Multi Exporter](multi-exporter.html) with CSS Paged Media. Future output pipelines will support LaTeX, Microsoft Word/Powerpoint, and Apple Keynote.
+- **Adding Citations Directly from Zotero**: Citations and bibliography details are pulled dynamically into Obsidian notes using [Zotero Manager](zotero-manager.md), supporting both local database queries and cloud Web API fallbacks.
+- **Publishing and Document Export**: Finished articles, reports, or research summaries are compiled directly from Obsidian into publication-ready PDFs using [Multi Exporter](multi-exporter.md) with CSS Paged Media. Future output pipelines will support LaTeX, Microsoft Word/Powerpoint, and Apple Keynote.
 
 ---
 
 ## Workflow Diagrams
 
 ### Basic Workflow Pipeline
-The diagram below maps the step-by-step researcher workflow from document acquisition through reference curation, note-taking, knowledge base compilation, and document publishing.
+The diagram below maps the step-by-step researcher workflow from document acquisition through reference curation, note-taking, knowledge base compilation, and document publishing. Subgraph group backgrounds are styled in light grey, and publishing elements are styled in light blue.
 
 ```mermaid
 flowchart TD
@@ -32,7 +32,7 @@ flowchart TD
     classDef zotero fill:#eef,stroke:#333,stroke-width:1px;
     classDef obsidian fill:#fee,stroke:#333,stroke-width:1px;
     classDef hal fill:#fef,stroke:#333,stroke-width:1px;
-    classDef publish fill:#ffe,stroke:#333,stroke-width:1px;
+    classDef publish fill:#d0e8ff,stroke:#333,stroke-width:1px;
 
     subgraph Inputs ["1. Document Acquisition"]
         Web["Web Articles / Clippings"]:::input
@@ -64,6 +64,12 @@ flowchart TD
         LaTeX["LaTeX / Word / Keynote\n(Future output pipelines)"]:::publish
     end
 
+    style Inputs fill:#f5f5f5,stroke:#ddd,stroke-width:1px
+    style ZoteroEnv fill:#f5f5f5,stroke:#ddd,stroke-width:1px
+    style ObsidianEnv fill:#f5f5f5,stroke:#ddd,stroke-width:1px
+    style HALEnv fill:#f5f5f5,stroke:#ddd,stroke-width:1px
+    style OutputEnv fill:#f5f5f5,stroke:#ddd,stroke-width:1px
+
     Web --> ZC
     EPUB --> ZC
     PDF --> ZReader
@@ -87,35 +93,37 @@ flowchart TD
 ```
 
 ### Data Flow Diagram
-The diagram below illustrates how data flows between the primary databases and files across software systems, illustrating sync boundaries and compiler ingestion.
+The diagram below illustrates how data flows between the primary databases and files across software systems, illustrating sync boundaries and compiler ingestion. Subgraph group backgrounds are styled in light grey, and data items are styled in light blue.
 
 ```mermaid
 flowchart LR
-    classDef zotero fill:#eef,stroke:#333,stroke-width:1px;
-    classDef obsidian fill:#fee,stroke:#333,stroke-width:1px;
-    classDef hal fill:#fef,stroke:#333,stroke-width:1px;
-    classDef export fill:#ffe,stroke:#333,stroke-width:1px;
+    classDef default fill:#d0e8ff,stroke:#333,stroke-width:1px;
 
     subgraph ZoteroData ["Zotero Data Store"]
-        ZDB[(Zotero Database)]:::zotero
-        ZPDF[PDF Annotations]:::zotero
-        BNNotes[Better Notes Export]:::zotero
+        ZDB[(Zotero Database)]
+        ZPDF[PDF Annotations]
+        BNNotes[Better Notes Export]
     end
 
     subgraph ObsidianData ["Obsidian Note Vault"]
-        OMD[Obsidian Notes .md]:::obsidian
-        MDA_Meta[MD Annotation Sidebar Metadata]:::obsidian
+        OMD[Obsidian Notes .md]
+        MDA_Meta[MD Annotation Sidebar Metadata]
     end
 
     subgraph HALData ["HAL Synthesis Store"]
-        RawDocs[Raw Sources]:::hal
-        DailyLogs[Daily Session Logs]:::hal
-        Wiki[Wiki Concepts & Connections]:::hal
+        RawDocs[Raw Sources]
+        DailyLogs[Daily Session Logs]
+        Wiki[Wiki Concepts & Connections]
     end
 
     subgraph Publishing ["Output Format"]
-        PagedPDF[CSS Paged Media PDF]:::export
+        PagedPDF[CSS Paged Media PDF]
     end
+
+    style ZoteroData fill:#f5f5f5,stroke:#ddd,stroke-width:1px
+    style ObsidianData fill:#f5f5f5,stroke:#ddd,stroke-width:1px
+    style HALData fill:#f5f5f5,stroke:#ddd,stroke-width:1px
+    style Publishing fill:#f5f5f5,stroke:#ddd,stroke-width:1px
 
     ZPDF -->|Extracted by better-notes| BNNotes
     BNNotes -->|Synced as Markdown| OMD
@@ -134,10 +142,10 @@ flowchart LR
 
 Detailed specifications, feature matrices, setup requirements, and migration information for each component are provided on their dedicated subpages:
 
-- **[Better Notes for Zotero](better-notes.html)**: A safe, sandbox-oriented fork of `zotero-better-notes` that synchronizes PDF reader annotations with Obsidian notes using Liquid templates and TypeScript security.
-- **[Zotero Highlighter Descriptions](highlighter-descriptions.html)**: A Zotero plugin that maps default highlight colors to custom semantic and cognitive coding labels.
-- **[Zotero Converter](zotero-convert.html)**: A Zotero utility plugin that converts non-PDF digital documents (EPUBs, web clippings, text files) into standardized PDF formats for unified annotation.
-- **[Zotero Manager for Obsidian](zotero-manager.html)**: A modernized integration plugin that pulls citations, references, and annotations into Obsidian, supporting Web API fallback and Nunjucks persist blocks.
-- **[MD Annotation for Obsidian](md-annotation.html)**: A delimiter-free markdown annotation and comment plugin that stores highlights out-of-band to preserve note body clean text.
-- **[Multi Exporter for Obsidian](multi-exporter.html)**: A desktop-only Obsidian exporter that pagination-renders previews and PDFs using CSS Paged Media.
-- **[HAL System](hal.html)**: A compiler-modeled research compiling vault inside `VaultSchar` that structures raw notes and daily session logs into a consistent academic wiki.
+- **[Better Notes for Zotero](better-notes.md)**: A safe, sandbox-oriented fork of `zotero-better-notes` that synchronizes PDF reader annotations with Obsidian notes using Liquid templates and TypeScript security.
+- **[Zotero Highlighter Descriptions](highlighter-descriptions.md)**: A Zotero plugin that maps default highlight colors to custom semantic and cognitive coding labels.
+- **[Zotero Converter](zotero-convert.md)**: A Zotero utility plugin that converts non-PDF digital documents (EPUBs, web clippings, text files) into standardized PDF formats for unified annotation.
+- **[Zotero Manager for Obsidian](zotero-manager.md)**: A modernized integration plugin that pulls citations, references, and annotations into Obsidian, supporting Web API fallback and Nunjucks persist blocks.
+- **[MD Annotation for Obsidian](md-annotation.md)**: A delimiter-free markdown annotation and comment plugin that stores highlights out-of-band to preserve note body clean text.
+- **[Multi Exporter for Obsidian](multi-exporter.md)**: A desktop-only Obsidian exporter that pagination-renders previews and PDFs using CSS Paged Media.
+- **[HAL System](hal.md)**: A compiler-modeled research compiling vault inside `VaultSchar` that structures raw notes and daily session logs into a consistent academic wiki.
