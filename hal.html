@@ -1,0 +1,64 @@
+---
+layout: default
+title: HAL System
+---
+
+<h1>HAL System</h1>
+
+<h2>Overview</h2>
+<p>The HAL (Heuristics and Logics) system is an integrated knowledge compilation and research synthesis vault located in <code>VaultSchar</code>. Built on a "compiler analogy," HAL decouples raw source documentation from compiled conceptual knowledge. It utilizes a structured LLM agent (e.g., Claude or Gemini) to parse daily notes and raw files, compiling them into a tightly cross-referenced, queryable academic wiki complete with health testing (linting).</p>
+
+<h2>Features</h2>
+<p>HAL operates across four conceptual layers representing a software compiler architecture:</p>
+<ul>
+  <li><strong>Layer 1: Daily Logs (<code>Daily/</code>)</strong>: Append-only logs capturing research sessions and discussions. These serve as the input logs documenting intellectual progress.</li>
+  <li><strong>Layer 2: Raw Sources (<code>Raw/</code>)</strong>: Curated and immutable source documents. Includes clipped web articles (<code>Articles/</code>), student notes (<code>Notes/</code>), and academic literature (<code>Papers/</code>).</li>
+  <li><strong>Layer 3: The Wiki (<code>Wiki/</code>)</strong>: The "executable" knowledge base compiled by the LLM. It includes:
+    <ul>
+      <li><code>Wiki/Concepts/</code>: Single explanatory articles for key concepts.</li>
+      <li><code>Wiki/Connections/</code>: Summaries of cross-cutting relationships connecting concepts.</li>
+      <li><code>Wiki/DocSum/</code>: Standardized, 3-to-5 sentence summaries of raw sources.</li>
+      <li><code>Wiki/QA/</code>: Saved answers to complex queries for cumulative knowledge building.</li>
+      <li><code>Wiki/index.md</code>: An auto-updated catalog of all pages.</li>
+    </ul>
+  </li>
+  <li><strong>Layer 4: Configuration (<code>CLAUDE.md</code> / <code>GEMINI.md</code>)</strong>: The compiler specification directing the LLM how to compile, update, lint, and query the vault.</li>
+  <li><strong>Automated Linting</strong>: Periodic health checks verifying link integrity (broken links), identifying orphan concepts, listing uncompiled daily logs, flagging stale pages, and detecting logical contradictions in compiled content.</li>
+</ul>
+
+<h2>Requirements & Installation</h2>
+<ol>
+  <li><strong>Directory Clone</strong>: Ensure the <code>VaultSchar/HAL</code> project directory is cloned locally.</li>
+  <li><strong>Python Environment</strong>:
+    <ul>
+      <li>Install Python 3.10+.</li>
+      <li>Install the <code>uv</code> package manager (<code>curl -LsSf https://astral.sh/uv/install.sh | sh</code>).</li>
+      <li>Navigate to <code>/Users/josh/VaultSchar/HAL</code> and run <code>uv sync</code> to set up the virtual environment (<code>.venv</code>) and install dependencies from <code>pyproject.toml</code> and <code>uv.lock</code>.</li>
+    </ul>
+  </li>
+  <li><strong>LLM API Configuration</strong>:
+    <ul>
+      <li>Set up your API keys (e.g., <code>ANTHROPIC_API_KEY</code> or <code>GEMINI_API_KEY</code>) as environment variables.</li>
+      <li>Review <code>/Users/josh/VaultSchar/HAL/CLAUDE.md</code> or <code>GEMINI.md</code> to ensure the compilation rules align with your active model.</li>
+    </ul>
+  </li>
+  <li><strong>Compile Run</strong>:
+    <ul>
+      <li>Run the compiler script via command line:
+        <code>uv run python -m hal compile</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Migration</h2>
+<ul>
+  <li><strong>Structured Knowledge Graph</strong>: Moving to the HAL system replaces unstructured, flat folders of notes with a formal compilation process where source materials and concepts are programmatically linked and cross-referenced.</li>
+  <li><strong>AI-Managed Wiki</strong>: The human researcher focuses on reading, annotating, and writing daily logs, while the compiler agent manages the indexing, cross-referencing, and layout of the compiled <code>Wiki</code> directory.</li>
+</ul>
+
+<h2>Future Integrations (Placeholders)</h2>
+<ul>
+  <li><strong>LaTeX Bibliography Compiling</strong>: Auto-generate LaTeX bibliographic records (<code>.bib</code> file) from compiled wiki concepts and raw sources.</li>
+  <li><strong>Word Outline Compilation</strong>: Auto-export compiled concepts into structured outline formats ready for import into Microsoft Word documents or PowerPoint slides.</li>
+  <li><strong>Keynote Slide Builder</strong>: Hook compiler connections directly into Keynote presentations using AppleScript to automatically generate structural slide outlines.</li>
+</ul>

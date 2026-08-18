@@ -1,0 +1,72 @@
+---
+layout: default
+title: Better Notes for Zotero
+---
+
+<h1>Better Notes for Zotero</h1>
+
+<h2>Overview</h2>
+<p>Better Notes for Zotero is a safe, sandbox-oriented fork of windingwind's original <code>zotero-better-notes</code> plugin. It is designed to act as a secure, reliable bridge between Zotero's PDF reader annotations and Obsidian's markdown environment. It ensures that notes created inside Zotero can be exported and kept in sync with Obsidian vaults without executing arbitrary, unsafe JavaScript code. By utilizing strict TypeScript compilation, it guarantees runtime stability and eliminates common crashes.</p>
+
+<h2>Features</h2>
+<ul>
+  <li><strong>Native Annotation Color Labels</strong>: Assign semantic meanings or label names to standard highlight colors (e.g., Yellow = "Key Finding", Red = "Contradiction"). These labels can be printed alongside annotations or used to group annotations into structured sections using <code>{% raw %}{% annotations grouped %}{% endraw %}</code>.</li>
+  <li><strong>Multiple Synced Notes per Item</strong>: Each Zotero bibliographic item can sync multiple independent notes to disk. The plugin automatically prompts for a short unique ID if there is a filename clash.</li>
+  <li><strong>Automatic 3-Way Merge</strong>: Handles sync conflicts by performing an automatic 3-way merge on non-conflicting edits. True conflicts present a visual diff viewer to resolve changes.</li>
+  <li><strong>Dedicated Keyboard Shortcuts</strong>:
+    <ul>
+      <li><code>⌃⌥S</code> — Run sync immediately (syncs all notes)</li>
+      <li><code>⌃⌥M</code> — Open Sync Manager</li>
+      <li><code>⌃⌥T</code> — Open Template Editor</li>
+      <li><code>⌃⌥P</code> — Open Zotero Plugins/Add-ons window</li>
+    </ul>
+  </li>
+  <li><strong>Safe Template Sandboxing</strong>: Replaced the original arbitrary-JavaScript template engine with a safe, sandboxed Liquid template language (using variables like <code>{% raw %}{{ item.title }}{% endraw %}</code> and filters like <code>| year</code>).</li>
+  <li><strong>Strict TypeScript Architecture</strong>: Re-written and compiled under strict TypeScript rules to eliminate runtime crashes.</li>
+</ul>
+
+<h2>Requirements & Installation</h2>
+<ol>
+  <li><strong>Download Plugin</strong>: Download the latest release <code>.xpi</code> file of <code>better-notes</code> from the <a href="https://github.com/jsglazer/better-notes/releases">GitHub releases page</a>.</li>
+  <li><strong>Install in Zotero</strong>:
+    <ul>
+      <li>Open Zotero.</li>
+      <li>Go to <code>Tools</code> &gt; <code>Add-ons</code>.</li>
+      <li>Click the gear icon (top-right) and select <code>Install Add-on From File...</code>.</li>
+      <li>Choose the downloaded <code>.xpi</code> file and click <code>Install</code>.</li>
+      <li>Restart Zotero when prompted.</li>
+    </ul>
+  </li>
+  <li><strong>Configure Sync settings</strong>:
+    <ul>
+      <li>Go to <code>Tools</code> &gt; <code>Better Notes</code> &gt; <code>Sync Manager</code> or use shortcut <code>⌃⌥M</code>.</li>
+      <li>Configure the export destination path to point directly to your Obsidian vault's literature notes directory.</li>
+    </ul>
+  </li>
+  <li><strong>Create Export Template</strong>:
+    <ul>
+      <li>Go to the Template Editor (<code>⌃⌥T</code>).</li>
+      <li>Define custom templates (such as <code>ItemNoteMD-Liquid</code> and <code>Annotations-Liquid</code>) to render notes into markdown using Liquid tags.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Migration</h2>
+<p><strong>Replacing windingwind's <code>zotero-better-notes</code></strong>: To transition to jsglazer's modernized version, uninstall the old plugin and install <code>better-notes</code> from the release package.</p>
+
+<blockquote>
+  <p><strong>[!WARNING] JavaScript Templates are Lost</strong><br>
+  Arbitrary JavaScript execution within templates has been removed for sandboxing and security reasons.<br><br>
+  <strong>Migration Action</strong>: You must rewrite any custom JavaScript-based templates into <strong>Liquid syntax</strong>. For example:
+  <ul>
+    <li><em>Old (JS)</em>: <code>item.getField('title')</code></li>
+    <li><em>New (Liquid)</em>: <code>{% raw %}{{ item.title }}{% endraw %}</code></li>
+  </ul>
+  </p>
+</blockquote>
+
+<h2>Future Integrations (Placeholders)</h2>
+<ul>
+  <li><strong>LaTeX Bibliographic Sync</strong>: Export references directly using BibLaTeX syntax alongside notes for publication in LaTeX formats.</li>
+  <li><strong>Word/Keynote Notes Support</strong>: Export structured summaries formatted for quick integration with Microsoft Word outline imports and Keynote slides.</li>
+</ul>

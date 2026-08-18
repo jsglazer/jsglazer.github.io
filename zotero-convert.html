@@ -1,0 +1,47 @@
+---
+layout: default
+title: Zotero Converter
+---
+
+<h1>Zotero Converter</h1>
+
+<h2>Overview</h2>
+<p>Zotero Converter (<code>zotero-convert</code>) is a Zotero plugin developed by jsglazer that automates the conversion of various digital source formats (such as EPUBs, Word documents, text files, and web pages) into standard PDF documents. Standardizing all files to PDFs solves the fragmentation problem in digital note-taking, enabling a unified annotation workflow inside Zotero's native PDF reader.</p>
+
+<h2>Features</h2>
+<ul>
+  <li><strong>Auto-Conversion on Ingestion</strong>: Detects non-PDF digital items when added to Zotero (e.g., EPUB, DOCX, TXT, Web clipping) and converts them to PDFs.</li>
+  <li><strong>Child Attachment Management</strong>: Attaches the newly generated PDF as a child item to the parent bibliographic item, keeping library files neat and organized.</li>
+  <li><strong>Format Normalization</strong>: Standardizes typography and layout during conversion, ensuring readability on both desktop and tablet readers.</li>
+  <li><strong>Original Source Retention</strong>: Retains original format attachments for reference while prioritizing the converted PDF for active reading, highlighting, and annotation.</li>
+</ul>
+
+<h2>Requirements & Installation</h2>
+<ol>
+  <li><strong>Download & Install</strong>:
+    <ul>
+      <li>Download the <code>.xpi</code> file of <code>zotero-convert</code> from <a href="https://github.com/jsglazer/zotero-convert/releases">GitHub releases</a>.</li>
+      <li>In Zotero, select <code>Tools</code> &gt; <code>Add-ons</code>, click the gear icon, choose <code>Install Add-on From File...</code>, select the <code>.xpi</code>, and restart Zotero.</li>
+    </ul>
+  </li>
+  <li><strong>Dependencies</strong>:
+    <ul>
+      <li>Ensure system-level conversion tools (such as Pandoc or LibreOffice headless binaries) are installed and added to your system <code>PATH</code> if converting Microsoft Word or EPUB formats.</li>
+    </ul>
+  </li>
+  <li><strong>Preferences Setup</strong>:
+    <ul>
+      <li>Go to <code>Tools</code> &gt; <code>Zotero Converter Settings</code>.</li>
+      <li>Specify output PDF quality, compression levels, and auto-conversion triggers for newly imported files.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Migration</h2>
+<p><strong>Eliminating Manual Steps</strong>: Replaces tedious manual PDF conversion workflows (such as "Print to PDF", web-to-PDF converters, or custom Automator shell scripts like <code>Md-Tex-PDF</code> and <code>Md-PDF</code>).</p>
+
+<h2>Future Integrations (Placeholders)</h2>
+<ul>
+  <li><strong>Advanced LaTeX/Word Conversion</strong>: Convert draft manuscript PDFs back to raw editable LaTeX or Word documents with citations preserved.</li>
+  <li><strong>Keynote PDF slide splitter</strong>: Automate the conversion and splitting of PowerPoint/Keynote PDFs into single-slide notes inside Zotero.</li>
+</ul>

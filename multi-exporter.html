@@ -1,0 +1,53 @@
+---
+layout: default
+title: Multi Exporter for Obsidian
+---
+
+<h1>Multi Exporter for Obsidian</h1>
+
+<h2>Overview</h2>
+<p>Multi Exporter (<code>multi-exporter</code>) is a desktop-only Obsidian plugin developed by jsglazer that exports notes to high-quality, publication-ready PDFs using CSS Paged Media. Its core design principle is absolute layout consistency: the editor's live preview renders the exact paginated output, ensuring that the final exported PDF never drifts from what you see on the screen.</p>
+
+<h2>Features</h2>
+<ul>
+  <li><strong>CSS Paged Media Support</strong>: Uses the PagedJS polyfill to support professional print features like margins, running headers/footers, and page numbers.</li>
+  <li><strong>Drift-Free Live Preview</strong>: The in-app preview is generated directly by the paginating webview, removing formatting drift.</li>
+  <li><strong>Custom Profile Stylesheets</strong>: Apply normalizations or layout overrides via profile-specific CSS stylesheets, allowing note layouts to adapt to various submission formats (e.g., reports, research papers).</li>
+  <li><strong>Pagination Diagnostics & Warnings</strong>: Automatically logs layout reports, warning when specific DOM elements fail to fit within page boxes and must be moved to subsequent pages.</li>
+</ul>
+
+<h2>Requirements & Installation</h2>
+<ol>
+  <li><strong>Install Plugin</strong>:
+    <ul>
+      <li>Open Obsidian.</li>
+      <li>Search for <code>Multi Exporter</code> in community plugins (or manually copy folder into <code>.obsidian/plugins/multi-exporter/</code>).</li>
+      <li>Enable the plugin in Settings.</li>
+    </ul>
+  </li>
+  <li><strong>Print Stylesheets Snippet</strong>:
+    <ul>
+      <li>Create a CSS snippet under <code>.obsidian/snippets/print-styles.css</code> using standard CSS Paged Media rules (e.g., <code>@page { size: A4; margin: 20mm; }</code>).</li>
+      <li>Enable the snippet in Obsidian settings &gt; <code>Appearance</code> &gt; <code>CSS snippets</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Configure Export Profiles</strong>:
+    <ul>
+      <li>Go to Multi Exporter plugin settings.</li>
+      <li>Create export profiles (e.g., "Academic Manuscript", "Executive Summary") and map them to their corresponding CSS snippets.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Migration</h2>
+<ul>
+  <li><strong>Replacing Standard PDF Export</strong>: Replaces Obsidian's built-in print-to-PDF tool, which often suffers from page-break cuts, line slicing, and header/footer limitations.</li>
+  <li><strong>Replacing External Compilers</strong>: Offers a lightweight, inside-Obsidian alternative to running external PDF converters like Pandoc or Typst.</li>
+</ul>
+
+<h2>Future Integrations (Placeholders)</h2>
+<ul>
+  <li><strong>LaTeX Academic Layout Export</strong>: Enable compiling markdown directly to structured LaTeX articles with complete style support using local LaTeX engines.</li>
+  <li><strong>Microsoft Word / PowerPoint Handouts</strong>: Compile slides and outline handouts directly from Obsidian to native <code>.docx</code> and <code>.pptx</code> documents using preset styling sheets.</li>
+  <li><strong>Apple Keynote Slide Deck Generator</strong>: Convert pagination boundary files into native Keynote slides via macOS automation scripts.</li>
+</ul>
