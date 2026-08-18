@@ -18,7 +18,7 @@ title: Integrated Research & Publishing Environment
   <h5 style="margin: 8px 0 4px 0; font-size: 13px; color: #555;">Zotero Plugins</h5>
   <ul style="padding-left: 18px; margin-bottom: 8px; font-size: 13px; line-height: 1.6;">
     <li><a href="better-notes.html">Better Notes</a></li>
-    <li><a href="highlighter-descriptions.html">Highlighter Descriptions</a></li>
+    <li><a href="zotero-audit.html">Audit Metadata</a></li>
     <li><a href="zotero-convert.html">Zotero Converter</a></li>
   </ul>
   
@@ -39,15 +39,28 @@ title: Integrated Research & Publishing Environment
 
 <hr style="clear: left;">
 
-<h2>Workflow Overview</h2>
-
-<p>The integrated environment standardizes document collection, annotation, concept mapping, and publishing into a systematic pipeline. It replaces fragmented workflows with a unified, compiler-driven knowledge graph. The workflow consists of the following core tasks:</p>
+<h2>Workflows</h2>
 
 <ul>
-  <li><strong>Reading and Annotating PDFs in Zotero</strong>: Digital sources of all types are converted to PDF format and annotated (using highlights and comments linked to specific highlight colors) directly in Zotero's native reader. Notes are then automatically exported and kept in sync with Obsidian.</li>
-  <li><strong>Creating and Annotating Markdown in Obsidian</strong>: Researchers can create original markdown notes and annotate both synced literature notes and original files using <a href="md-annotation.html">MD Annotation</a>, a delimiter-free, out-of-band annotation sidebar that preserves the clean plain-text structure of note bodies.</li>
-  <li><strong>Synthesizing Knowledge via the HAL System</strong>: Notes and articles are collected in a structured vault system inside <code>VaultSchar</code> (modeled after a compiler architecture) where an LLM compiler agent automatically indexes materials, writes document summaries (<code>DocSum/</code>), and identifies logical connections (<code>Connections/</code>) to build a cross-referenced research wiki.</li>
-  <li><strong>Adding Citations Directly from Zotero</strong>: Citations and bibliography details are pulled dynamically into Obsidian notes using <a href="zotero-manager.html">Zotero Manager</a>, supporting both local database queries and cloud Web API fallbacks.</li>
+  <li>Homework</li>
+  <li>Class notes</li>
+  <li>Research Papers</li>
+  <li>Group Assignments</li>
+</ul>
+<h2>Workflow Overview</h2>
+
+<p>The integrated environment standardizes document collection, annotation, 
+bibliographic management,
+document exporting,
+and note review 
+into a systematic pipeline.
+This collection of software and plugins reduces the friction in the previously available set of tools.  The workflow consists of the following core tasks:</p>
+
+<ul>
+  <li><strong>Reading and Annotating PDFs in Zotero</strong>: Annotate (highlight & comment) PDFs and create templated notes.  Sync the notes with a two-way link to Obsidian.  Assignment custom labels to Zotero highlight colors and sync that customization with imported notes in Obsidian.</li>
+  <li><strong>Annotating Markdown in Obsidian</strong>: Annotate both synced notes and original files using <a href="md-annotation.html">MD Annotation</a>, a delimiter-free tools that shows notes in the margin and/or a sidebar. No errant text is introduced in the note body text (all meta data is at bottom of file).</li>
+  <li><strong>Synthesizing Knowledge via the HAL System</strong>: Notes and articles are collected in a structured folder system (modeled after compiler architecture) where an LLM can automatically index materials, write document summaries (<code>DocSum/</code>), and identify logical connections (<code>Connections/</code>) to build a cross-referenced research wiki.</li>
+  <li><strong>Adding Citations Directly from Zotero</strong>: Citations and bibliography details are pulled dynamically into Obsidian notes using <a href="zotero-manager.html">Zotero Manager</a>.  The plugin include both a direct database query to Zotero as well as a Web API fallbacks.</li>
   <li><strong>Publishing and Document Export</strong>: Finished articles, reports, or research summaries are compiled directly from Obsidian into publication-ready PDFs using <a href="multi-exporter.html">Multi Exporter</a> with CSS Paged Media. Future output pipelines will support LaTeX, Microsoft Word/Powerpoint, and Apple Keynote.</li>
 </ul>
 
