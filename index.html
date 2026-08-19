@@ -57,11 +57,11 @@ into a systematic pipeline.
 This collection of software and plugins reduces the friction in the previously available set of tools.  The workflow consists of the following core tasks:</p>
 
 <ul>
-  <li><strong>Reading and Annotating PDFs in Zotero</strong>: Annotate (highlight & comment) PDFs and create templated notes.  Sync the notes with a two-way link to Obsidian.  Assignment custom labels to Zotero highlight colors and sync that customization with imported notes in Obsidian.</li>
-  <li><strong>Annotating Markdown in Obsidian</strong>: Annotate both synced notes and original files using <a href="md-annotation.html">MD Annotation</a>, a delimiter-free tools that shows notes in the margin and/or a sidebar. No errant text is introduced in the note body text (all meta data is at bottom of file).</li>
+  <li><strong>Reading and Annotating PDFs in Zotero</strong>: Annotate (highlight & comment) PDFs and create templated notes.  Sync the notes with a two-way link to Obsidian.  Assign custom labels to Zotero highlight colors and sync that customization with imported notes in Obsidian.</li>
+  <li><strong>Annotating Markdown in Obsidian</strong>: Annotate both synced notes and original files using <a href="md-annotation.html">MD Annotation</a>, a delimiter-free tool that shows notes in the margin and/or a sidebar. No errant text is introduced in the note body text (all meta data is at bottom of file).</li>
   <li><strong>Synthesizing Knowledge via the HAL System</strong>: Notes and articles are collected in a structured folder system (modeled after compiler architecture) where an LLM can automatically index materials, write document summaries (<code>DocSum/</code>), and identify logical connections (<code>Connections/</code>) to build a cross-referenced research wiki.</li>
   <li><strong>Adding Citations Directly from Zotero</strong>: Citations and bibliography details are pulled dynamically into Obsidian notes using <a href="zotero-manager.html">Zotero Manager</a>.  The plugin include both a direct database query to Zotero as well as a Web API fallbacks.</li>
-  <li><strong>Publishing and Document Export</strong>: Finished articles, reports, or research summaries are compiled directly from Obsidian into publication-ready PDFs using <a href="multi-exporter.html">Multi Exporter</a> with CSS Paged Media. Future output pipelines will support LaTeX, Microsoft Word/Powerpoint, and Apple Keynote.</li>
+  <li><strong>Document Export</strong>: Export markdown documents with headers, footers, page number, and other customizations using <a href="multi-exporter.html">Multi Exporter</a>.  There are options for exporting multiple files.  Profiles can be configured for articles, manuscripts, data-heavy products, or other styles. Future output pipelines will support LaTeX, Microsoft Word/Powerpoint, and Apple Keynote.</li>
 </ul>
 
 <hr>
@@ -189,9 +189,9 @@ flowchart LR
 
 <h3>Core Platforms</h3>
 <ul>
-  <li><strong><a href="zotero.html">Zotero</a></strong>: Free, open-source reference manager that acts as the library source of truth, harvesting citations and managing annotated PDF assets.</li>
-  <li><strong><a href="obsidian.html">Obsidian</a></strong>: Plain-text Markdown note taking application that serves as the central graph-linked repository for literature and atomic notes.</li>
-  <li><strong><a href="hal.html">HAL System</a></strong>: A compiler-modeled research compiling vault inside <code>VaultSchar</code> that structures raw notes and daily session logs into a consistent academic wiki.</li>
+  <li><strong><a href="zotero.html">Zotero</a></strong>: Free, open-source reference manager that acts as the library for research document in PDF, ePub, and other formats. Extracts meta (citation) data and provides annotation and commenting PDF assets.</li>
+  <li><strong><a href="obsidian.html">Obsidian</a></strong>: Highly customizable Markdown editor that serves as the hub for all rresearch, knowledge management, and writing.</li>
+  <li><strong><a href="hal.html">HAL System</a></strong>: A compiler-modeled set of folders inside Obsidian that structures raw notes and session logs into a consistent, cross-referenced academic wiki.</li>
 </ul>
 
 <h3>Plugins &amp; Tools</h3>
