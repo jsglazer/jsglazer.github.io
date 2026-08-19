@@ -6,7 +6,7 @@ The core workflow remains annotating digital items in Zotero and keeping notes i
 
 My new plugins replace the following:
 
-- [Better Notes for Zotero](https://github.com/jsglazer/better-notes)
+- [Enhanced Notes for Zotero](https://github.com/jsglazer/enhanced-notes)
 - [Highlighter Descriptions for Zotero](https://github.com/jsglazer/zotero-highlighter-descriptions)
 - [Zotero Converter](https://github.com/jsglazer/zotero-convert) (new plug-in for converting all sources to PDF)
 - [Zotero manager for Obsidian](https://github.com/jsglazer/zotero-manager)
