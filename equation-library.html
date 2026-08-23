@@ -1,0 +1,35 @@
+---
+layout: default
+title: Equation Library for Obsidian
+---
+
+<h1>Equation Library for Obsidian</h1>
+
+<p><strong>GitHub Repository</strong>: <a href="https://github.com/jsglazer/equation-library" target="_blank">github.com/jsglazer/equation-library</a></p>
+
+<h2>Overview</h2>
+<p>Equation Library (<code>equation-library</code>) is an Obsidian plugin developed by jsglazer that provides a pop-up library of reusable math formulas, backed by a live WYSIWYG LaTeX generator. Build an equation and watch it render as you type, save the ones you use again, and drop any of them into a note as inline (<code>$…$</code>) or block (<code>$$…$$</code>) math. A <code>$/</code> autocomplete trigger surfaces the same library directly from the editor. It runs on macOS, Windows, Linux, iOS, and Android.</p>
+
+<h2>Features</h2>
+<ul>
+  <li><strong>Library popup</strong>: Run <code>Show Equation Library</code> from the command palette or click the sigma icon in the ribbon. Saved equations render as scrolling tiles &mdash; click to load one into the generator, double-click to insert it inline, shift + double-click to insert it as a block, right-click to rename, re-categorize, or delete.</li>
+  <li><strong>Live WYSIWYG generator</strong>: A math field where structure appears as you type (e.g. <code>\frac</code> becomes a two-slot fraction immediately), bound bidirectionally to a plain LaTeX source box. Powered by <a href="https://cortexjs.io/mathlive/" target="_blank">MathLive</a>.</li>
+  <li><strong>Search, filter, and categorize</strong>: Search the library, filter by category, and sort by name, newest, or recently changed. Categories can be created, renamed, and deleted (equations move to <code>Uncategorized</code> rather than being deleted).</li>
+  <li><strong>Editor autocomplete</strong>: Type <code>$/</code> anywhere in a note to open a filterable picker of the library; accepting a suggestion replaces the trigger text with the fully delimited equation. Off by default on phones (where it conflicts with the on-screen keyboard); configurable trigger string.</li>
+  <li><strong>Local, out-of-band storage</strong>: Settings, the equation catalog, and an action log live in the plugin's own folder &mdash; nothing is written to the vault unless you export. The plugin makes no network requests; MathLive's fonts ship inline as data URIs.</li>
+  <li><strong>Export / import catalog</strong>: Export the full catalog to any path in the vault, or import one without ever overwriting existing equations (name clashes are suffixed, duplicates are skipped).</li>
+</ul>
+
+<h2>Requirements & Installation</h2>
+<ol>
+  <li><strong>Install Plugin</strong>: Not yet in the community plugin browser. Copy <code>main.js</code>, <code>manifest.json</code>, and <code>styles.css</code> from a <a href="https://github.com/jsglazer/equation-library/releases" target="_blank">release</a> into <code>&lt;vault&gt;/.obsidian/plugins/equation-library/</code>, then enable it under <code>Settings</code> &gt; <code>Community Plugins</code>.</li>
+  <li><strong>Configure</strong>: In the plugin settings, set the default insert format (inline or block), enable/configure autocomplete, and set the action-log size limit.</li>
+</ol>
+
+<h2>How It Fits the Workflow</h2>
+<p>Research and coursework notes in Obsidian frequently need typeset formulas &mdash; problem sets, derivations, model specifications. Equation Library keeps a personal, reusable formula bank alongside the note-taking environment rather than requiring formulas to be re-typed from scratch or copied from external LaTeX references each time.</p>
+
+<h2>Future Integrations (Placeholders)</h2>
+<ul>
+  <li><strong>Community Plugin Listing</strong>: Submit to the official Obsidian community plugin directory for in-app discovery and installation.</li>
+</ul>

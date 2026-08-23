@@ -1,0 +1,47 @@
+---
+layout: default
+title: MathPractice
+---
+
+<h1>MathPractice</h1>
+
+<p><strong>GitHub Repository</strong>: <a href="https://github.com/jsglazer/math-practice" target="_blank">github.com/jsglazer/math-practice</a></p>
+
+<h2>Overview</h2>
+<p>MathPractice is a native macOS &amp; iOS calculus drill app, built around working problems <strong>on paper</strong> rather than typing answers into a screen. Pick a topic and sub-type, get a problem, solve it by hand, then ask to see the answer &mdash; separately, ask to see the derivation one step at a time. Self-report right or wrong, and the app tracks that record per problem type and adjusts difficulty accordingly. It is a standalone project, unrelated to the Zotero/Obsidian research workflow described elsewhere on this site.</p>
+<p>Most math apps are answer-entry quiz engines that grade a typed answer and dump the full solution as one wall of text. MathPractice inverts all three: it never asks for the answer, it gates disclosure behind explicit requests, and it reveals the derivation incrementally so a stuck problem can be unstuck with the smallest possible hint.</p>
+
+<h2>Features</h2>
+<ul>
+  <li><strong>No answer entry, no grading</strong>: Correctness is a self-reported Right/Wrong &mdash; the app is a drill partner, not an examiner.</li>
+  <li><strong>Incremental reveal</strong>: "Show next step" releases one more line of the derivation at a time; "Show answer" releases the final answer.</li>
+  <li><strong>Adaptive difficulty (1&ndash;10)</strong>, tracked independently per topic/sub-type pair, with a configurable ladder (harder after N correct in a row, easier after M wrong, with a hold period).</li>
+  <li><strong>24 derivative templates</strong> across power, product, quotient, chain, trigonometric, exponential/logarithmic, and partial-derivative rules &mdash; every template verified against SymPy at build time before it ships.</li>
+  <li><strong>Progress matrix &amp; session history</strong>: Topic &times; sub-type &times; difficulty view, plus a browsable log of past practice sessions.</li>
+  <li><strong>Key problems &amp; notes</strong>: Star any problem, attach a note, and export starred problems (or a full session) to PDF.</li>
+  <li><strong>PDF worksheets</strong> (macOS): Export a worksheet, work it on paper, then self-report by question number.</li>
+  <li><strong>Problem-pack import</strong>: Load JSON packs of LLM-authored problems for cases the built-in templates handle poorly.</li>
+  <li><strong>Multi-device sync via CloudKit</strong>: Two Macs and an iPhone converge on the same state via an append-only, order-independent event log &mdash; no synced mutable "difficulty" field to conflict.</li>
+</ul>
+
+<p><strong>v1 topic scope is derivatives.</strong> Integrals, limits, and advanced algebra are planned as additional topics.</p>
+
+<h2>Requirements & Installation</h2>
+<ol>
+  <li><strong>Build from source</strong>: Requires Xcode 16+ and <a href="https://github.com/yonaskolb/XcodeGen" target="_blank">XcodeGen</a>.
+    <pre><code>swift test                      # headless gate — no Xcode project, no Python, no network
+xcodegen generate
+xcodebuild -project MathPractice.xcodeproj -scheme MathPractice     -destination 'platform=macOS' build
+xcodebuild -project MathPractice.xcodeproj -scheme MathPractice-iOS -destination 'generic/platform=iOS' build</code></pre>
+  </li>
+  <li><strong>Releases</strong>: Signed builds are published on the <a href="https://github.com/jsglazer/math-practice/releases" target="_blank">GitHub releases page</a>.</li>
+</ol>
+
+<h2>Correctness</h2>
+<p>There is no computer algebra system bundled in the app. Each template states its own derivative in closed form; a build-time tool (<code>Tools/verify_templates/</code>) runs every template across fixed seeds and difficulties, differentiates the generated problem with SymPy, and refuses to write the golden fixture unless the stated answer and the last worked-solution step are symbolically equal to it. The shipped Swift test suite then only needs to reproduce that golden fixture byte for byte &mdash; SymPy itself is never shipped or a runtime/test dependency.</p>
+
+<h2>Future Integrations (Placeholders)</h2>
+<ul>
+  <li><strong>Additional Topics</strong>: Integrals, limits, and advanced algebra, added as new topic directories against the existing template/ladder/dashboard architecture.</li>
+  <li><strong>Community Problem Packs</strong>: A shareable format for LLM-authored problem packs beyond local JSON import.</li>
+</ul>
