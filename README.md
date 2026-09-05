@@ -1,12 +1,5 @@
 # Integrated Research & Publishing Environment
 
-I'm an incoming PhD student in public policy. Before I start school, I decided to prepare a modern workflow for taking both digital and paper notes. I leveraged the amazing work of developers who build plug-ins for Zotero and Obsidian, namely [windingwind's zotero-better-notes](https://github.com/windingwind/zotero-better-notes) and [obsidian-zotero-integration](https://github.com/mgmeyers/obsidian-zotero-integration). I am releasing a modernized set of these plug-ins, plus other tools, which are more efficient and secure than their predecessors.
+<p>I am a PhD student in public policy. Prior to starting school I began building a integrated workflow, a process that will continue as I move through school.  I am documenting my process primarily for my own benefit but also as a way to share what I've learning, acknowledge the talented contributed to software & process that I have relied on, and improve the system over time.</p>
 
-The core workflow remains annotating digital items in Zotero and keeping notes in Obsidian. Zotero remains the platform for managing citations (digital and paper) and creating annotations. Obsidian remains the platform for taking notes, developing wikis, utilizing spaced repetition, and other knowledge management activities.
-
-My new plugins replace the following:
-
-- [Enhanced Notes for Zotero](https://github.com/jsglazer/enhanced-notes)
-- [Highlighter Descriptions for Zotero](https://github.com/jsglazer/zotero-highlighter-descriptions)
-- [Zotero Converter](https://github.com/jsglazer/zotero-convert) (new plug-in for converting all sources to PDF)
-- [Zotero manager for Obsidian](https://github.com/jsglazer/zotero-manager)
+<p>The core workflow remains annotating digital items in Zotero and keeping notes in Obsidian. Zotero remains the platform for managing citations (digital and paper) and creating annotations. Obsidian remains the platform for taking notes, developing wikis, utilizing spaced repetition, and other knowledge management activities.</p>
